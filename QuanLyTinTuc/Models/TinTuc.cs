@@ -28,7 +28,9 @@ namespace QuanLyTinTuc.Models
         public Nullable<int> SoLanXem { get; set; }
         public Nullable<bool> TrangThai { get; set; }
         public Nullable<int> MaChuDe { get; set; }
+        public int MaAccount { get; set; }
     
+        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
         public virtual ChuDe ChuDe { get; set; }

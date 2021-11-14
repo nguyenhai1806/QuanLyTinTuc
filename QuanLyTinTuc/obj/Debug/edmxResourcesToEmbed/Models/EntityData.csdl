@@ -10,6 +10,7 @@
     <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TrangThai" Type="Boolean" />
     <Property Name="Admin" Type="Boolean" />
+    <NavigationProperty Name="TinTucs" Relationship="Self.FK_TinTuc_Account" FromRole="Account" ToRole="TinTuc" />
   </EntityType>
   <EntityType Name="BinhLuan">
     <Key>
@@ -45,9 +46,23 @@
     <Property Name="SoLanXem" Type="Int32" />
     <Property Name="TrangThai" Type="Boolean" />
     <Property Name="MaChuDe" Type="Int32" />
+    <Property Name="MaAccount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_TinTuc_Account" FromRole="TinTuc" ToRole="Account" />
     <NavigationProperty Name="BinhLuans" Relationship="Self.FK_BinhLuan_TinTuc" FromRole="TinTuc" ToRole="BinhLuan" />
     <NavigationProperty Name="ChuDe" Relationship="Self.FK_TinTuc_ChuDe" FromRole="TinTuc" ToRole="ChuDe" />
   </EntityType>
+  <Association Name="FK_TinTuc_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="MaAccount" />
+      </Principal>
+      <Dependent Role="TinTuc">
+        <PropertyRef Name="MaAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BinhLuan_TinTuc">
     <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="1" />
     <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
@@ -72,11 +87,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLTinTucEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLTinTucEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Accounts" EntityType="Self.Account" />
     <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
     <EntitySet Name="ChuDes" EntityType="Self.ChuDe" />
     <EntitySet Name="TinTucs" EntityType="Self.TinTuc" />
+    <AssociationSet Name="FK_TinTuc_Account" Association="Self.FK_TinTuc_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="TinTuc" EntitySet="TinTucs" />
+    </AssociationSet>
     <AssociationSet Name="FK_BinhLuan_TinTuc" Association="Self.FK_BinhLuan_TinTuc">
       <End Role="TinTuc" EntitySet="TinTucs" />
       <End Role="BinhLuan" EntitySet="BinhLuans" />

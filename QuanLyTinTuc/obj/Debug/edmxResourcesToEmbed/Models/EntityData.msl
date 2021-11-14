@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLTinTucModelStoreContainer" CdmEntityContainer="QLTinTucEntities">
+  <EntityContainerMapping StorageEntityContainer="QLTinTucModelStoreContainer" CdmEntityContainer="QLTinTucEntities1">
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="QLTinTucModel.Account">
         <MappingFragment StoreEntitySet="Account">
@@ -46,6 +46,7 @@
           <ScalarProperty Name="SoLanXem" ColumnName="SoLanXem" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="MaChuDe" ColumnName="MaChuDe" />
+          <ScalarProperty Name="MaAccount" ColumnName="MaAccount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

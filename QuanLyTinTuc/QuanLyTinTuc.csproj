@@ -167,14 +167,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Database\Khởi tạo - Nhập liệu.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\EntityData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntityData.Context.cs</LastGenOutput>
       <DependentUpon>EntityData.edmx</DependentUpon>
+      <LastGenOutput>EntityData.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\EntityData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

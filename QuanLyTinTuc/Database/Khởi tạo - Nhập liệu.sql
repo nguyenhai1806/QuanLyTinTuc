@@ -23,9 +23,12 @@ CREATE TABLE TinTuc
     Ngay        DATE DEFAULT GETDATE(),
     SoLanXem    INT DEFAULT 0 CHECK (SoLanXem > 0),
     TrangThai   BIT DEFAULT 1, --0 la khong hien thi, 1 la có hiển thị
-    MaChuDe     INT,
-    CONSTRAINT FK_TinTuc_ChuDe FOREIGN KEY (MaChuDe) REFERENCES dbo.ChuDe (MaChuDe)
+    MaChuDe     INT NOT NULL,
+	MaAccount INT NOT NULL,
+    CONSTRAINT FK_TinTuc_ChuDe FOREIGN KEY (MaChuDe) REFERENCES dbo.ChuDe (MaChuDe),
+	CONSTRAINT FK_TinTuc_Account FOREIGN KEY (MaAccount) REFERENCES dbo.Account (MaAccount)
 );
+GO
 
 CREATE TABLE BinhLuan
 (
@@ -62,9 +65,9 @@ INSERT INTO ChuDe (TenChuDe, TrangThai) VALUES
 	(N'Đời sống', 0);
 
 
-INSERT INTO TinTuc (TieuDe, hinhDaiDien, NoiDung, Ngay, SoLanXem, TrangThai, MaChuDe) VALUES
+INSERT INTO TinTuc (TieuDe, hinhDaiDien, NoiDung, Ngay, SoLanXem, TrangThai, MaChuDe,MaAccount) VALUES
 	(N'Apple đầu tư 200 triệu USD cho sản xuất tấm nền mini LED', 'Hinh1.png', N'Theo PhoneArena, iPad Pro 12,9 inch mà Apple ra mắt trong năm 2021 đi kèm màn hình mini LED thu hút được một lượng lớn khách hàng.<br/>Với sản lượng hiện tại không thể đáp ứng nhu cầu, Apple đã mua các thiết bị sản xuất tấm nền mini LED trị giá hàng trăm triệu USD. Máy móc sản xuất mới sẽ được sử dụng bởi các nhà cung cấp tấm nền mini LED duy nhất của Apple - Taiwan Surface Mounting Technology (TSMT). Báo cáo cũng nói Apple đã phải vật lộn với nhu cầu hiện tại về màn hình cho iPad Pro 12,9 inch 2021.
-	Apple được cho là đang có kế hoạch giới thiệu công nghệ màn hình mới cho dòng máy tính xách tay MacBook Pro 14 và 16 inch. Các tin đồn cho biết Apple cũng đang có kế hoạch bổ sung tấm nền mini LED cho iPad mini 6 thiết kế lại và iPad giá rẻ. Với khoản đầu tư 200 triệu USD này, Apple hy vọng sẽ cung cấp thêm 700.000 đến 800.000 tấm nền mini LED được sản xuất mỗi tháng.', '27-1-2021', 7, 1, 1),
+	Apple được cho là đang có kế hoạch giới thiệu công nghệ màn hình mới cho dòng máy tính xách tay MacBook Pro 14 và 16 inch. Các tin đồn cho biết Apple cũng đang có kế hoạch bổ sung tấm nền mini LED cho iPad mini 6 thiết kế lại và iPad giá rẻ. Với khoản đầu tư 200 triệu USD này, Apple hy vọng sẽ cung cấp thêm 700.000 đến 800.000 tấm nền mini LED được sản xuất mỗi tháng.', '27-1-2021', 7, 1, 1, 1),
 	(N'14 cách giúp bạn tăng cường miễn dịch chống Covid-19', 'Hinh2.png', N'Trong khi chờ đợi có đủ vắc xin ngừa Covid-19, một trong những cách tốt nhất để tự bảo vệ mình khỏi sự tấn công của Covid-19 là tăng cường hệ miễn dịch. Sau đây là 14 lời khuyên của bác sĩ tim mạch hàng đầu, của các tổ chức y tế và từ nghiên cứu mới nhất, giúp bạn tăng cường khả năng miễn dịch chống lại Covid-19, theo eatthis.com.
 	<br/>1. Tránh thực phẩm chế biến
 	Tiến sĩ Luiza Petre, bác sĩ tim mạch kiêm chuyên gia dinh dưỡng, phó giáo sư lâm sàng về tim mạch tại Trường Y Mount Sinai và là thành viên tích cực của Trường cao đẳng Tim mạch Mỹ, cho biết nên ăn thực phẩm hữu cơ chưa qua chế biến, tránh đường và thực phẩm đóng hộp để giảm viêm và xây dựng hệ miễn dịch.
@@ -105,7 +108,7 @@ INSERT INTO TinTuc (TieuDe, hinhDaiDien, NoiDung, Ngay, SoLanXem, TrangThai, MaC
 	13. Không uống rượu
 	Tổ chức Y tế Thế giới cho biết, uống rượu làm suy yếu hệ miễn dịch và do đó làm giảm khả năng chống chọi với các bệnh truyền nhiễm.
 	14. Không để béo phì
-	Theo Trung tâm Kiểm soát và Phòng ngừa dịch bệnh Mỹ, béo phì nghiêm trọng làm tăng nguy cơ mắc các biến chứng do Covid-19. Nghiên cứu cho biết, béo phì làm suy giảm chức năng miễn dịch. Hãy giảm cân nếu bị thừa cân, theo eatthis.com.', '10-7-2021', 2, 1, 8);
+	Theo Trung tâm Kiểm soát và Phòng ngừa dịch bệnh Mỹ, béo phì nghiêm trọng làm tăng nguy cơ mắc các biến chứng do Covid-19. Nghiên cứu cho biết, béo phì làm suy giảm chức năng miễn dịch. Hãy giảm cân nếu bị thừa cân, theo eatthis.com.', '10-7-2021', 2, 1, 8,2);
 
 INSERT INTO Account VALUES
 	('admin@gmail.com', 'admin', '1234', 1, 1),
@@ -116,9 +119,9 @@ INSERT INTO Account VALUES
 
 
 INSERT INTO BinhLuan(MaTinTuc,ThoiGian, Noidung, HoTen, Email, TrangThai) VALUES
-	(1, '13-11-2021', N'Báo hôm nay tin tức hay đấy ', N'User 1', 'user1@gmail.com', 1),
-	(1, '13-11-2021', N'Toàn tin vịt thế mà cũng đăng', N'User 2', 'user2@gmail.com', 0),
-	(2, '14-11-2021', N'Nhiều thông tin quá .Tui học được nhiều tin tức mới', N'User 3', 'user3@gmail.com', 1),
-	(2, '13-11-2021', N'Đọc thông tin để không bị lạc trôi nha mọi người ', N'Admin', 'admin@gmail.com', 1),
-	(1, '15-11-2021', N'Chán', N'Custom1', 'custom1@gmail.com', 0),
-	(2, '15-11-2021', N'Anh hùng bàn phím tới đây', N'Custom1', 'custom1@gmail.com', 1);
+	(4, '13-11-2021', N'Báo hôm nay tin tức hay đấy ', N'User 1', 'user1@gmail.com', 1),
+	(4, '13-11-2021', N'Toàn tin vịt thế mà cũng đăng', N'User 2', 'user2@gmail.com', 0),
+	(4, '14-11-2021', N'Nhiều thông tin quá .Tui học được nhiều tin tức mới', N'User 3', 'user3@gmail.com', 1),
+	(5, '13-11-2021', N'Đọc thông tin để không bị lạc trôi nha mọi người ', N'Admin', 'admin@gmail.com', 1),
+	(5, '15-11-2021', N'Chán', N'Custom1', 'custom1@gmail.com', 0),
+	(5, '15-11-2021', N'Anh hùng bàn phím tới đây', N'Custom1', 'custom1@gmail.com', 1);

@@ -14,11 +14,20 @@ namespace QuanLyTinTuc.Models
     
     public partial class Account
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Account()
+        {
+            this.TinTucs = new HashSet<TinTuc>();
+        }
+    
         public int MaAccount { get; set; }
         public string Email { get; set; }
         public string TenHienThi { get; set; }
         public string MatKhau { get; set; }
         public Nullable<bool> TrangThai { get; set; }
         public Nullable<bool> Admin { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TinTuc> TinTucs { get; set; }
     }
 }

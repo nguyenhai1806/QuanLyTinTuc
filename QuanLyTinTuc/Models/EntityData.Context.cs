@@ -13,10 +13,10 @@ namespace QuanLyTinTuc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QLTinTucEntities : DbContext
+    public partial class QLTinTucEntities1 : DbContext
     {
-        public QLTinTucEntities()
-            : base("name=QLTinTucEntities")
+        public QLTinTucEntities1()
+            : base("name=QLTinTucEntities1")
         {
         }
     

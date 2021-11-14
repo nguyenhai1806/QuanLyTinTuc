@@ -12,7 +12,7 @@ namespace QuanLyTinTuc.Controllers
 {
     public class ChuDesController : Controller
     {
-        private QLTinTucEntities db = new QLTinTucEntities();
+        private QLTinTucEntities1 db = new QLTinTucEntities1();
 
         // GET: ChuDes
         public ActionResult Index()

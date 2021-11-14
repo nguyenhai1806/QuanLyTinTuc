@@ -43,6 +43,7 @@
     <Property Name="SoLanXem" Type="int" />
     <Property Name="TrangThai" Type="bit" />
     <Property Name="MaChuDe" Type="int" />
+    <Property Name="MaAccount" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_BinhLuan_TinTuc">
     <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="1" />
@@ -53,6 +54,18 @@
       </Principal>
       <Dependent Role="BinhLuan">
         <PropertyRef Name="MaTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TinTuc_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="MaAccount" />
+      </Principal>
+      <Dependent Role="TinTuc">
+        <PropertyRef Name="MaAccount" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -76,6 +89,10 @@
     <AssociationSet Name="FK_BinhLuan_TinTuc" Association="Self.FK_BinhLuan_TinTuc">
       <End Role="TinTuc" EntitySet="TinTuc" />
       <End Role="BinhLuan" EntitySet="BinhLuan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TinTuc_Account" Association="Self.FK_TinTuc_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="TinTuc" EntitySet="TinTuc" />
     </AssociationSet>
     <AssociationSet Name="FK_TinTuc_ChuDe" Association="Self.FK_TinTuc_ChuDe">
       <End Role="ChuDe" EntitySet="ChuDe" />
