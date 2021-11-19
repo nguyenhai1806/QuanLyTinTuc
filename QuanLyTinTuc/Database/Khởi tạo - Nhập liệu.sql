@@ -118,10 +118,10 @@ INSERT INTO Account VALUES
 	('custom1@gmail.com', 'custom1', '1234', 1, 0);
 
 
-INSERT INTO BinhLuan(MaTinTuc,ThoiGian, Noidung, HoTen, Email, TrangThai) VALUES
-	(4, '13-11-2021', N'Báo hôm nay tin tức hay đấy ', N'User 1', 'user1@gmail.com', 1),
-	(4, '13-11-2021', N'Toàn tin vịt thế mà cũng đăng', N'User 2', 'user2@gmail.com', 0),
-	(4, '14-11-2021', N'Nhiều thông tin quá .Tui học được nhiều tin tức mới', N'User 3', 'user3@gmail.com', 1),
-	(5, '13-11-2021', N'Đọc thông tin để không bị lạc trôi nha mọi người ', N'Admin', 'admin@gmail.com', 1),
-	(5, '15-11-2021', N'Chán', N'Custom1', 'custom1@gmail.com', 0),
-	(5, '15-11-2021', N'Anh hùng bàn phím tới đây', N'Custom1', 'custom1@gmail.com', 1);
+INSERT INTO BinhLuan(ThoiGian, Noidung, HoTen, Email, TrangThai, MaTinTuc) VALUES
+	('13-11-2021', N'Báo hôm nay tin tức hay đấy ', N'User 1', 'user1@gmail.com', 1, 2),
+	('13-11-2021', N'Toàn tin vịt thế mà cũng đăng', N'User 2', 'user2@gmail.com', 0, 2),
+	('14-11-2021', N'Nhiều thông tin quá .Tui học được nhiều tin tức mới', N'User 3', 'user3@gmail.com', 1, 2),
+	('13-11-2021', N'Đọc thông tin để không bị lạc trôi nha mọi người ', N'Admin', 'admin@gmail.com', 1, 1),
+	('15-11-2021', N'Chán', N'Custom1', 'custom1@gmail.com', 0, 1),
+	('15-11-2021', N'Anh hùng bàn phím tới đây', N'Custom1', 'custom1@gmail.com', 1, 1);

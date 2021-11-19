@@ -1,0 +1,24 @@
+﻿@model IEnumerable<QuanLyTinTuc.Models.TinTuc>
+
+@{
+    GetData data = new GetData();
+}
+
+<div class="pl-20 pl-md-0">
+    <div class="popular-post">
+        <h4 class="p-title"><b>PHỔ BIẾN</b></h4>
+        @foreach (var item in Model)
+        {
+            <a class="link oflow-hidden pos-relative mb-20 dplay-block" >
+                <div class="wh-100x abs-tlr img-bg-head">
+                    <img src="~/Upload/images/@Html.DisplayFor(modelItem => item.HinhDaiDien)" alt="Image" height="200px" width="350px" />
+                </div>
+                <div class="ml-120 min-h-100x smallpop">
+                    <h5 class="poppost">@item.TieuDe</h5>
+                    <h6 class="color-lite-black pt-2 mb-1">
+                        <i class="fa fa-calendar-o mr-1"></i>@String.Format("{0:dd/MM/yyyy}", item.Ngay)  <i class="fa fa-eye mr-1 ml-2"></i> @item.SoLanXem lượt xem
+                    </h6>
+                </div>
+            </a>}
+    </div>
+

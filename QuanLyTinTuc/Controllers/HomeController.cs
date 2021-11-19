@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTinTuc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,12 @@ namespace QuanLyTinTuc.Controllers
 {
     public class HomeController : Controller
     {
+        private QLTinTucEntities1 db = new QLTinTucEntities1();
         public ActionResult Index()
         {
             return View();
         }
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
