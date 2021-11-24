@@ -168,11 +168,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\cssChuDe.css" />
+    <Content Include="Content\css\css_Layout.css" />
+    <Content Include="Content\css\css_NewPost.css" />
     <Content Include="Database\Khởi tạo - Nhập liệu.sql" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="icon.ico" />
     <Content Include="Models\EntityData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EntityData.edmx</DependentUpon>
@@ -203,8 +206,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\remove.js" />
+    <Content Include="Upload\icon\facebook_25px.svg" />
+    <Content Include="Upload\icon\icon.svg" />
+    <Content Include="Upload\icon\icons8_search_2.svg" />
+    <Content Include="Upload\icon\info_25px.svg" />
+    <Content Include="Upload\icon\phone_25px.svg" />
+    <Content Include="Upload\icon\youtube_25px.svg" />
     <Content Include="Upload\images\Hinh1.png" />
     <Content Include="Upload\images\Hinh2.png" />
+    <Content Include="Views\HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -226,6 +237,7 @@
     <Content Include="Views\ChuDes\Index.cshtml" />
     <Content Include="Views\Home\PopularPost.cshtml" />
     <Content Include="Views\Home\NewPost.cshtml" />
+    <Content Include="Views\Shared\ChuDes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

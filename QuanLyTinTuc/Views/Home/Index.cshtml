@@ -3,16 +3,11 @@
     GetData data = new GetData();
 }
 <div>
-    <td>
-    <div class="col-md-4">
-        <!-- Phổ biến -->
+    <div>
         @Html.Partial("PopularPost", data.GetPopularPost())
-
     </div>
-    <div class="col-md-4">
-        <!-- Phổ biến -->
+    
+    <div>
         @Html.Partial("NewPost", data.GetNewPost())
-
     </div>
-    </td>
 </div>
