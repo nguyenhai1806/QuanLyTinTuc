@@ -1,0 +1,33 @@
+﻿
+@{
+    
+}
+
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h1>Wellcome</h1>
+            </div>
+            <div class="card-body">
+
+
+                @if (Session["Username"] != null)
+                {
+
+                    <p>Name: @Session["Username"].ToString()</p>
+                    <p>Email: @Session["UserEmail"].ToString()</p>
+                    <a href="@Url.Action("Logout","User")" class="btn btn-warning">Đăng xuất</a>
+
+                    <a href="@Url.Action("EditAccount","Account",new { id = Session["Id"].ToString() })" class="btn btn-primary">Sửa thông tin tài khoản</a>
+
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

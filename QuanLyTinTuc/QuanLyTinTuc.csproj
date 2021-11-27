@@ -129,8 +129,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CommonData\GetData.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChuDesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +171,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\cssChuDe.css" />
+    <Content Include="Content\css\cssLogin.css" />
     <Content Include="Content\css\css_Layout.css" />
     <Content Include="Content\css\css_NewPost.css" />
     <Content Include="Database\Khởi tạo - Nhập liệu.sql" />
@@ -207,12 +210,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\remove.js" />
-    <Content Include="Upload\icon\facebook_25px.svg" />
+    <Content Include="Upload\icon\Facebook.svg" />
     <Content Include="Upload\icon\icon.svg" />
-    <Content Include="Upload\icon\icons8_search_2.svg" />
-    <Content Include="Upload\icon\info_25px.svg" />
-    <Content Include="Upload\icon\phone_25px.svg" />
-    <Content Include="Upload\icon\youtube_25px.svg" />
+    <Content Include="Upload\icon\icons8_search_3.svg" />
+    <Content Include="Upload\icon\info.svg" />
+    <Content Include="Upload\icon\LoginPanel.svg" />
+    <Content Include="Upload\icon\phone.svg" />
+    <Content Include="Upload\icon\YouTube.svg" />
     <Content Include="Upload\images\Hinh1.png" />
     <Content Include="Upload\images\Hinh2.png" />
     <Content Include="Views\HtmlPage1.html" />
@@ -235,9 +239,26 @@
     <Content Include="Views\ChuDes\Details.cshtml" />
     <Content Include="Views\ChuDes\Edit.cshtml" />
     <Content Include="Views\ChuDes\Index.cshtml" />
+    <Content Include="Views\Shared\ChuDes.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\LoginSuccess.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
+    <Content Include="Views\Account\EditAccount.cshtml" />
+    <Content Include="Views\TinTuc\Xemchitiet.cshtml" />
     <Content Include="Views\Home\PopularPost.cshtml" />
     <Content Include="Views\Home\NewPost.cshtml" />
-    <Content Include="Views\Shared\ChuDes.cshtml" />
+    <Content Include="Views\TinTuc\ThoiSu.cshtml" />
+    <Content Include="Views\TinTuc\TheGioi.cshtml" />
+    <Content Include="Views\TinTuc\KinhDoanh.cshtml" />
+    <Content Include="Views\TinTuc\GiaiTri.cshtml" />
+    <Content Include="Views\TinTuc\TheThao.cshtml" />
+    <Content Include="Views\TinTuc\PhapLuat.cshtml" />
+    <Content Include="Views\TinTuc\GiaoDuc.cshtml" />
+    <Content Include="Views\TinTuc\SucKhoe.cshtml" />
+    <Content Include="Views\TinTuc\DoiSong.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\SentMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

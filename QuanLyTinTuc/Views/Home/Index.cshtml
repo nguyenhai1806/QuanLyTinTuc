@@ -1,13 +1,13 @@
-﻿@model IEnumerable<QuanLyTinTuc.Models.TinTuc>
+﻿
 @{ 
-    GetData data = new GetData();
+    
 }
 <div>
     <div>
-        @Html.Partial("PopularPost", data.GetPopularPost())
+        @Html.Action("PopularPost", "Home")
     </div>
     
     <div>
-        @Html.Partial("NewPost", data.GetNewPost())
+        @Html.Action("NewPost", "Home")
     </div>
 </div>

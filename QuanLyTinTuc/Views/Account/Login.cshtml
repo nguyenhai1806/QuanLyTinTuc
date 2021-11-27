@@ -1,0 +1,25 @@
+﻿<link href="~/Content/css/cssLogin.css" rel="stylesheet" />
+@model QuanLyTinTuc.Models.Account
+@{
+    ViewBag.Title = "Login";
+}
+<div class="login">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="login-content">
+            <div class="form-container">
+                <h1>ĐĂNG NHẬP</h1>
+                <hr />
+                @Html.TextBoxFor(m => m.TenHienThi, "", new { @class = "form-control input", @placeholder = "Username" })
+                @Html.ValidationMessageFor(model => model.TenHienThi, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.MatKhau, "", new { @class = "form-control input", @placeholder = "Password", @type = "password" })
+                <a href="@Url.Action("ForgotPassword", "Account")">Quên mật khẩu?</a>
+                <br />
+                <button type="submit">Đăng nhập</button>
+                <br />
+                <label class="text-danger">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+            </div>
+        </div>
+    }
+</div>

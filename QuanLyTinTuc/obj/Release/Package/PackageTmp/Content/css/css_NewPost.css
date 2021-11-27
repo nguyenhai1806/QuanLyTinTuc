@@ -1,0 +1,42 @@
+﻿body {
+}
+.p-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 42px;
+    /* Black 80% */
+    color: #121221;
+}
+.post {
+    width: 35rem;
+    height: 32rem;
+}
+    .post img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .post .title {
+        font-style: normal;
+        font-weight: bold;  
+        font-size: 20px;
+        line-height: 32px;
+        /* Black 80% */
+        color: #121221;
+    }
+    .post a {
+        text-decoration: none;
+    }
+    .post .info {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        /* Black 20% */
+
+        color: #949494;
+    }
+

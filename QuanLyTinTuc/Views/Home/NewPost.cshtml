@@ -2,7 +2,7 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/css/css_NewPost.css" rel="stylesheet" />
 @{
-    GetData data = new GetData();
+    
 }
 
 <div class="list-popular">
@@ -11,7 +11,7 @@
         @foreach (var item in Model)
         {
             <div class="col-lg-3 col-md-4 col-sm-6 col-sm-12 post effect8">
-                <a>
+                <a href="@Url.Action("xemchitiet","TinTuc", new {@Matt=item.MaTinTuc })">
                     <div>
                         <img src="~/Upload/images/@Html.DisplayFor(modelItem => item.HinhDaiDien)" alt="Logo @item.TieuDe" />
                     </div>

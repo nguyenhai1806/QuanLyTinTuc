@@ -28,5 +28,15 @@ namespace QuanLyTinTuc.Controllers
 
             return View();
         }
+        public ActionResult PopularPost()
+        {
+            return PartialView(db.TinTucs.Take(8).Where(m => m.TrangThai == true).OrderByDescending(m => m.SoLanXem).ToList());
+        }
+        public ActionResult NewPost()
+        {
+            return PartialView(db.TinTucs.Take(8).Where(m => m.TrangThai == true).OrderByDescending(m => m.SoLanXem).ToList());
+        }
+
+
     }
 }

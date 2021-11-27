@@ -1,0 +1,27 @@
+﻿@model IEnumerable<QuanLyTinTuc.Models.TinTuc>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/css/css_NewPost.css" rel="stylesheet" />
+@{
+
+}
+
+<div class="list-popular">
+    <div class="row">PHÁP LUẬT</b></h4>
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-sm-12 post effect8">
+                <a href="@Url.Action("xemchitiet","TinTuc", new {@Matt=item.MaTinTuc })">
+                    <div>
+                        <img src="~/Upload/images/@Html.DisplayFor(modelItem => item.HinhDaiDien)" alt="Logo @item.TieuDe" />
+                    </div>
+                    <div>
+                        <h5 class="title">@item.TieuDe</h5>
+                        <h6 class="info">
+                            <i class=""></i>@String.Format("{0:dd/MM/yyyy}", item.Ngay)  <i class="fa fa-eye mr-1 ml-2"></i> @item.SoLanXem lượt xem
+                        </h6>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
