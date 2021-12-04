@@ -1,0 +1,118 @@
+﻿@model QuanLyTinTuc.Models.TinTuc
+<link href="~/Content/web/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "editPost";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    #imganno, #avatarPost {
+        display: none;
+    }
+</style>
+<div class="container-fluid" style="margin-top:15px;padding-top:15px;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaTinTuc)
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.MaChuDe, "Loại bài viết:", htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-12">
+                    @Html.DropDownList("MaChuDe", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaChuDe, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TieuDe, "Tiêu đề bài viết", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Thay đổi ảnh đại diện bài viết:", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                <label class="switch">
+                    <input type="checkbox" id="changeAvatar" name="changeAvatar" value="@(Model.TrangThai == true ? "true" : "false")" class="success">
+                    <span class="slider"></span>
+                </label>
+                <p id="changeAvtText" style="display:inline"> Giữ nguyên</p>
+            </div>
+        </div>
+        <div class="form-group" id="avatarPost">
+            @Html.Label("Ảnh đại diện bài viết: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                <input type="file" id="avatarFile" name="avatarFile" class="form-control-file" />
+                @Html.EditorFor(model => model.HinhDaiDien, new { htmlAttributes = new { @class = "form-control", @id="avatarFile" } })
+                @Html.ValidationMessageFor(model => model.HinhDaiDien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group id=" avatarPost"">
+            @Html.LabelFor(model => model.HinhDaiDien, " Thay đổi ảnh đại diện bài viết", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                <input type="file" id="avatarFile" name="avatarFile" class="form-control-file" />
+                @Html.ValidationMessageFor(model => model.HinhDaiDien, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            <div class="col-md-10" style="text-align:center">
+                <img class="img-responsive" style="max-width:60%;text-align:center" id="avtpreview" src="~/img/@Model.HinhDaiDien" @*src="~/Content/images/no-image-available.jpg"*@ alt="Ảnh đại diện" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.NoiDung, new { @class = "form-control", required = "true", @id = "noidung" })
+                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.SoLanXem, "Số lần xem", htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.SoLanXem, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoLanXem, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Trạng thái bài viết:", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                <label class="switch">
+                    <input type="checkbox" id="Status" name="Status" value="@(Model.TrangThai == true ? "true" : "false")" @(Model.TrangThai == true ? "checked" : "") class="success">
+                    <span class="slider"></span>
+                </label>
+                <p id="showstatus" style="display:inline"> Đăng ngay</p>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrangThai, "Trạng thái hiển thị", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TrangThai)
+                    @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sửa bài" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+    }
+</div>
+<script src="~/Content/js/editPost.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            CKEDITOR.replace("noidung");
+        </script>
+
+    }
+    @*<textarea name="NoidDung" id="noidung" class = "form-control">@Model.NoiDung</textarea>*@

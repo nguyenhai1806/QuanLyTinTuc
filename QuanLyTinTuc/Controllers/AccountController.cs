@@ -83,7 +83,6 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult Login()
         {
             return View();
-
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,7 +91,7 @@ namespace QuanLyTinTuc.Controllers
             using (QLTinTucEntities1 db = new QLTinTucEntities1())
             {
                 //userModel.Password = BaiKTNho.Models.User.GetMD5(userModel.Password);
-                var userDetails = db.Accounts.Where(x => x.TenHienThi == userModel.TenHienThi && x.MatKhau == userModel.MatKhau).FirstOrDefault();
+                var userDetails = db.Accounts.Where(x => x.Email == userModel.Email && x.MatKhau == userModel.MatKhau).FirstOrDefault();
 
                 if (userDetails == null)
                 {
@@ -104,14 +103,22 @@ namespace QuanLyTinTuc.Controllers
                     Session["Id"] = userDetails.MaAccount;
                     Session["UserEmail"] = userDetails.Email;
                     Session["Username"] = userDetails.TenHienThi;
-                    
-                    return RedirectToAction("LoginSuccess", "Account");
+                    if (userDetails.Admin == true)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("LoginSuccess", "Account");
+                    }
                 }
             }
         }
         public ActionResult Logout()
         {
-            Session.Clear();//remove session
+            Session["Id"] = null;
+            Session["UserEmail"] = null;
+            Session["Username"] = null;
             return RedirectToAction("Login");
         }
 
@@ -136,7 +143,7 @@ namespace QuanLyTinTuc.Controllers
         {
             
             //userModel.Password = BaiKTNho.Models.User.GetMD5(userModel.Password);
-            var userDetails = db.Accounts.Where(x => x.TenHienThi == userModel.TenHienThi).FirstOrDefault();
+            var userDetails = db.Accounts.Where(x => x.Email == userModel.Email).FirstOrDefault();
 
             if (userDetails == null)
             {
@@ -145,9 +152,8 @@ namespace QuanLyTinTuc.Controllers
             }
             else
             {
-                
                 var Receiver = Request.Form["Receiver"];
-                
+                Receiver = userDetails.Email;
                 var Subject = Request.Form["Subject"];
                 Subject = "nguyenhai1806.it@gmail.com";
                 string Body = Request.Form["Body"];

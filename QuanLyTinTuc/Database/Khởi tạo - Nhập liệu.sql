@@ -124,3 +124,13 @@ INSERT INTO BinhLuan(ThoiGian, Noidung, HoTen, Email, TrangThai, MaTinTuc) VALUE
 	('13-11-2021', N'Đọc thông tin để không bị lạc trôi nha mọi người ', N'Admin', 'admin@gmail.com', 1, 1),
 	('15-11-2021', N'Chán', N'Custom1', 'custom1@gmail.com', 0, 1),
 	('15-11-2021', N'Anh hùng bàn phím tới đây', N'Custom1', 'custom1@gmail.com', 1, 1);
+
+UPDATE dbo.Account SET Email = 'nguyenhai86.it@gmail.com' WHERE MaAccount = 1
+
+SELECT * FROM dbo.ChuDe
+
+DELETE dbo.ChuDe WHERE MaChuDe = 9
+DELETE dbo.TinTuc WHERE MaTinTuc = 1
+SELECT * FROM dbo.TinTuc
+
+SELECT * FROM dbo.Account

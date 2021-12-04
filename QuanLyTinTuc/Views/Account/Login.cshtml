@@ -11,8 +11,8 @@
             <div class="form-container">
                 <h1>ĐĂNG NHẬP</h1>
                 <hr />
-                @Html.TextBoxFor(m => m.TenHienThi, "", new { @class = "form-control input", @placeholder = "Username" })
-                @Html.ValidationMessageFor(model => model.TenHienThi, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control input", @placeholder = "Email" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 @Html.TextBoxFor(m => m.MatKhau, "", new { @class = "form-control input", @placeholder = "Password", @type = "password" })
                 <a href="@Url.Action("ForgotPassword", "Account")">Quên mật khẩu?</a>
                 <br />
