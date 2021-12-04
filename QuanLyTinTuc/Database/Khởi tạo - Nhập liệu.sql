@@ -21,15 +21,14 @@ CREATE TABLE TinTuc
     HinhDaiDien NVARCHAR(MAX),
     NoiDung     NVARCHAR(MAX),
     Ngay        DATE DEFAULT GETDATE(),
-    SoLanXem    INT DEFAULT 0 CHECK (SoLanXem > 0),
+    SoLanXem    INT DEFAULT 0 CHECK (SoLanXem >= 0),
     TrangThai   BIT DEFAULT 1, --0 la khong hien thi, 1 la có hiển thị
     MaChuDe     INT NOT NULL,
-	MaAccount INT NOT NULL,
+	MaAccount INT NOT NULL DEFAULT 1
     CONSTRAINT FK_TinTuc_ChuDe FOREIGN KEY (MaChuDe) REFERENCES dbo.ChuDe (MaChuDe),
 	CONSTRAINT FK_TinTuc_Account FOREIGN KEY (MaAccount) REFERENCES dbo.Account (MaAccount)
 );
 GO
-
 CREATE TABLE BinhLuan
 (
     MaBinhLuan INT IDENTITY PRIMARY KEY,

@@ -4,13 +4,6 @@
 }
 
 <style>
-    .container {
-        text-align: justify;
-        text-justify: inter-word;
-    }
-    .container img{
-        text-align: center;
-    }
 </style>
 
 <div class="container">
@@ -18,7 +11,9 @@
     <h1 style="font-weight: bold">@Model.TieuDe</h1>
     <br />
     <br />
-    @Html.Raw(@Model.NoiDung);
+    <article>
+        @Html.Raw(@Model.NoiDung);
+    </article>
     <br />
 </div>
 

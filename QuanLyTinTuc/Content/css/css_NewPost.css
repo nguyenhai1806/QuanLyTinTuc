@@ -12,10 +12,11 @@
 .post {
     width: 35rem;
     height: 32rem;
+    margin-bottom: 5rem;
 }
     .post img {
-        max-width: 100%;
-        height: auto;
+        max-width: 32rem;
+        height: 25rem;
         border-radius: 8px;
     }
     .post .title {

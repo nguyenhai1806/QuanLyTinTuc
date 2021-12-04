@@ -11,21 +11,17 @@ namespace QuanLyTinTuc
         private QLTinTucEntities1 db = new QLTinTucEntities1();
         public List<Models.ChuDe> GetChuDes()
         {
-            for (int i = 0; i <= 3; i++)
-            {
-
-            }
             return db.ChuDes.ToList<ChuDe>().Where(m => m.TrangThai == true).ToList();
         }
         public List<Models.TinTuc> GetPopularPost()
         {
-            return db.TinTucs.Take(8)
+            return db.TinTucs.Take(10)
                 .Where(m => m.TrangThai == true).OrderByDescending(m => m.SoLanXem).ToList();
         }
         public List<Models.TinTuc> GetNewPost()
         {
             DateTime now = DateTime.Now;
-            return db.TinTucs.Take(8)
+            return db.TinTucs.Take(10)
                 .Where(m => m.TrangThai == true).OrderByDescending(m => m.Ngay).ToList();
         }
     }

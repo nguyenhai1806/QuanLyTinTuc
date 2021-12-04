@@ -10,7 +10,7 @@
         <h4 class="p-title"><b>MỚI NHẤT</b></h4>
         @foreach (var item in Model)
         {
-            <div class="col-lg-3 col-md-4 col-sm-6 col-sm-12 post effect8">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-sm-12 post">
                 <a href="@Url.Action("xemchitiet","TinTuc", new {@Matt=item.MaTinTuc })">
                     <div>
                         <img src="~/Upload/images/@Html.DisplayFor(modelItem => item.HinhDaiDien)" alt="Logo @item.TieuDe" />

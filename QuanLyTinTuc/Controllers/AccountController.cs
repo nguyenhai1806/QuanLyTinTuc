@@ -149,16 +149,16 @@ namespace QuanLyTinTuc.Controllers
                 var Receiver = Request.Form["Receiver"];
                 
                 var Subject = Request.Form["Subject"];
-                Subject = "bennumber186@gmail.com";
+                Subject = "nguyenhai1806.it@gmail.com";
                 string Body = Request.Form["Body"];
-                Body = "Mật khẩu của bạn là"+userDetails.MatKhau;
+                Body = "Mật khẩu của bạn là "+userDetails.MatKhau;
                 var Email = System.Configuration.ConfigurationManager.AppSettings["Email"].ToString();
                 MailMessage obj = new MailMessage(Email, Receiver);
                 obj.Subject = Subject;
                 obj.Body = Body;
                 obj.IsBodyHtml = true;
 
-                MailAddress bcc = new MailAddress("bennumber186@gmail.com");
+                MailAddress bcc = new MailAddress("nguyenhai1806.it@gmail.com");
                 obj.Bcc.Add(bcc);            //attach file
                                              //HttpPostedFileBase file = Request.Files[0];
                                              //if (file.ContentLength > 0)
@@ -169,7 +169,6 @@ namespace QuanLyTinTuc.Controllers
                 using (SmtpClient smtp = new SmtpClient())
                 {
                     var Password = System.Configuration.ConfigurationManager.AppSettings["PasswordEmail"].ToString();
-
                     smtp.Host = "smtp.gmail.com";
                     smtp.EnableSsl = true;
                     NetworkCredential NetworkCred = new NetworkCredential(Email, Password);
