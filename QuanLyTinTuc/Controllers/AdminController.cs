@@ -19,7 +19,7 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult Index()
         {
             if (Session["Id"] == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             else
                 return View();
         }
@@ -27,7 +27,7 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult ListPost(string sortOrder, string CurrentSort, int? page, string titleStr)
         {
             if (Session["Id"] == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             //DVCPContext db = new DVCPContext();
             int pageSize = 100;
             int pageIndex = 1;
@@ -197,7 +197,7 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult editPost(int? id)
         {
             if (Session["Id"] == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
 
             if (id == null)
             {
@@ -221,7 +221,7 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult editPost([Bind(Include = "MaTinTuc, TieuDe,HinhDaiDien,NoiDung,Ngay,SoLanXem,TrangThai,MaChuDe,MaAccount")] TinTuc tinTuc)
         {
             if (Session["Id"] == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
 
             if (ModelState.IsValid)
             {
@@ -275,7 +275,7 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult Details(int? id)
         {
             if (Session["Id"] == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
 
             if (id == null)
             {
@@ -342,6 +342,5 @@ namespace QuanLyTinTuc.Controllers
         {
             return View();
         }
-
     }
 }

@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/css/css_Layout.css" rel="stylesheet" />
-    @*<script src="~/Scripts/remove.js"></script>*@
+    <script src="~/Scripts/remove.js"></script>
     <link href="~/Content/css/cssChuDe.css" rel="stylesheet" />
 </head>
-<body class="container" style="padding-top: 0px; width: 95%">
-    <header class="navbar">
+<body>
+    <header>
         <div class="row">
             <div class="col-md-4">
                 <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
@@ -23,81 +23,63 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <form class="navbar-form" action="/action_page.php">
+                @using (Html.BeginForm("Search", "TinTuc", FormMethod.Get, new { @class = "navbar-form" }))
+                {
                     <div class="form-group search">
                         <div class="search-box">
-                            <input style="outline: 0; background-color: #E0ECDE; border: none; width: 90%; font-size: 16px; margin-top: 0.4rem; " spellcheck="false" type="text" placeholder="Search">
-                            <button class="button-search"><img src="~/Upload/icon/icons8_search_3.svg" alt=""></button>
+                            <input style="outline: 0; background-color: white; border: none; width: 90%; font-size: 16px; margin-top: 0.4rem; " spellcheck="false" type="text" placeholder="Search" name="txtSearch">
+                            <button type="submit" class="button-search"><img src="~/Upload/icon/icons8_search_3.svg" alt=""></button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
             <div class="col-md-4 btn-group">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Đăng nhập", "Login", "Account")</li>
-                    <li>@Html.ActionLink("Đăng ký", "Register", "Account")</li>
-                </ul>
-            </div>
-        </div>
-        <div class="topnav row" id="myTopnav">
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-
-            <div style="text-transform:uppercase">
-                <a href="@Url.Action("ThoiSu","TinTuc")">THỜI SỰ</a>
-                <a href="@Url.Action("TheGioi","TinTuc")">THẾ GIỚI</a>
-                <a href="@Url.Action("KinhDoanh","TinTuc")">KINH DOANH</a>
-                <a href="@Url.Action("GiaiTri","TinTuc")">GIẢI TRÍ</a>
-                <a href="@Url.Action("TheThao","TinTuc")">THỂ THAO</a>
-                <a href="@Url.Action("PhapLuat","TinTuc")">PHÁP LUẬT</a>
-                <a href="@Url.Action("GiaoDuc","TinTuc")">GIÁO DỤC</a>
-                <a href="@Url.Action("SucKhoe","TinTuc")">SỨC KHỎE</a>
-            </div>
-
-
-            <script>
-                function myFunction() {
-                    var x = document.getElementById("myTopnav");
-                    if (x.className === "topnav") {
-                        x.className += " responsive";
-                    } else {
-                        x.className = "topnav";
-                    }
+                @if (Session["Username"] == null)
+                {
+                    <a href="@Url.Action("Login", "Account")" class="cta-btn">Đăng nhập</a>
                 }
-            </script>
+                else
+                {
+                    <a href="@Url.Action("Index", "Admin")" class="cta-btn">@Session["Username"]</a>
+                }
+
+
+               <a href="@Url.Action("About", "Home")" class="cta-btn">Hướng dẫn sử dụng</a>
+            </div>
+
+            
         </div>
+
+        <div style="text-transform:uppercase" class="topnav row">
+            <a href="@Url.Action("ThoiSu","TinTuc")">THỜI SỰ</a>
+            <a href="@Url.Action("TheGioi","TinTuc")">THẾ GIỚI</a>
+            <a href="@Url.Action("KinhDoanh","TinTuc")">KINH DOANH</a>
+            <a href="@Url.Action("GiaiTri","TinTuc")">GIẢI TRÍ</a>
+            <a href="@Url.Action("TheThao","TinTuc")">THỂ THAO</a>
+            <a href="@Url.Action("PhapLuat","TinTuc")">PHÁP LUẬT</a>
+            <a href="@Url.Action("GiaoDuc","TinTuc")">GIÁO DỤC</a>
+            <a href="@Url.Action("SucKhoe","TinTuc")">SỨC KHỎE</a>
+        </div>
+        <div style="clear:both;">
+            <hr class="row"/>
+        </div>
+        
     </header>
+    
     <div class="container body-content" style="width:100%">
         @RenderBody()
     </div>
 
-    <hr />
     <footer>
-        <div class="footer">
-            <div><h3>Trang web được tạo bởi</h3></div>
-            <br />
-            <div class="text-center contact">
-                <ul>
-                    <li><a href='#'><img src="~/Upload/icon/Facebook.svg" /></a></li>
-                    <li><a href='#'><img src="~/Upload/icon/info.svg" /></a></li>
-                    <li><a href='tel:0966152246'><img src="~/Upload/icon/phone.svg" /></a></li>
-                    <li><a href='#'><img src="~/Upload/icon/YouTube.svg" /></a></li>
-                </ul>
-            </div>
+        <hr />
+        <div class="contact">
+            <a href='#'><img src="~/Upload/icon/Facebook.svg" alt="Alternate Text" /></a>
+            <a href='#'><img src="~/Upload/icon/info.svg" /></a>
+            <a href='tel:0966152246'><img src="~/Upload/icon/phone.svg" /></a>
+            <a href='#'><img src="~/Upload/icon/YouTube.svg" /></a>
         </div>
     </footer>
 
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

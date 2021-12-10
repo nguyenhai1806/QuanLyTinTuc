@@ -1,6 +1,7 @@
 ﻿using QuanLyTinTuc.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,6 +20,11 @@ namespace QuanLyTinTuc.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            TinTuc tinTuc = db.TinTucs.Find(Matt);
+            tinTuc.SoLanXem++;
+            db.Entry(tinTuc).State = EntityState.Modified;
+            db.SaveChanges();
+
             return View(chitiet);
         }
         public ActionResult ThoiSu()
@@ -56,6 +62,17 @@ namespace QuanLyTinTuc.Controllers
         public ActionResult DoiSong()
         {
             return View(db.TinTucs.Where(n => n.MaChuDe == 9).ToList());
+        }
+        [HttpGet]
+        public ActionResult Search(string txtSearch)
+        {
+            
+            if (!String.IsNullOrEmpty(txtSearch)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
+            {
+                return View(db.TinTucs.Where(m => m.TieuDe.Contains(txtSearch) || m.Account.TenHienThi.Contains(txtSearch)).ToList<TinTuc>());
+            }
+            else
+                return View(db.TinTucs.ToList<TinTuc>());
         }
     }
 }

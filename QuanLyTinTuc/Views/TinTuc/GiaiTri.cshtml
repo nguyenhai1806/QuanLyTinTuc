@@ -1,28 +1,39 @@
 ﻿@model IEnumerable<QuanLyTinTuc.Models.TinTuc>
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/css/css_NewPost.css" rel="stylesheet" />
 @{
 
 }
-
-<div class="list-popular">
-    <div class="row">
-        <h4 class="p-title"><b>GIẢI TRÍ</b></h4>
-        @foreach (var item in Model)
-        {
-            <div class="col-lg-3 col-md-4 col-sm-6 col-sm-12 post effect8">
-                <a href="@Url.Action("xemchitiet","TinTuc", new {@Matt=item.MaTinTuc })">
-                    <div>
+<h4 class="p-title"><b>GIẢI TRÍ</b></h4>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 col-sm-12 post ">
+            <a href="@Url.Action("xemchitiet","TinTuc", new {@Matt=item.MaTinTuc })">
+                <div>
+                    @if (item.HinhDaiDien == null)
+                    {
+                        <img src="~/Upload/images/NoImage.svg" alt="Logo @item.TieuDe" />
+                    }
+                    else if (item.HinhDaiDien.StartsWith("https://") == true)
+                    {
+                        <img src="@Html.DisplayFor(modelItem => item.HinhDaiDien)" alt="Logo @item.TieuDe" />
+                    }
+                    else
+                    {
                         <img src="~/Upload/images/@Html.DisplayFor(modelItem => item.HinhDaiDien)" alt="Logo @item.TieuDe" />
+                    }
+                </div>
+                <div>
+                    <div class="title">
+                        <h5>@item.TieuDe</h5>
                     </div>
-                    <div>
-                        <h5 class="title">@item.TieuDe</h5>
-                        <h6 class="info">
-                            <i class=""></i>@String.Format("{0:dd/MM/yyyy}", item.Ngay)  <i class="fa fa-eye mr-1 ml-2"></i> @item.SoLanXem lượt xem
-                        </h6>
+
+                    <div class="info">
+                        <i>@String.Format("{0:dd/MM/yyyy}", item.Ngay)  <i class="fa fa-eye mr-1 ml-2"></i> @item.SoLanXem lượt xem</i>
                     </div>
-                </a>
-            </div>
-        }
-    </div>
+                </div>
+            </a>
+        </div>
+    }
 </div>
+

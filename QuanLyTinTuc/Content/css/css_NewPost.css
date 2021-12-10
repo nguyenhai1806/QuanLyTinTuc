@@ -1,43 +1,26 @@
-﻿body {
+﻿.p-title{
+    clear: both;
+    margin-bottom: 2rem;
 }
-.p-title {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 42px;
-    /* Black 80% */
-    color: #121221;
+.post{
+    width: 150rem;
+    height: 23rem;
+    color: #333;
+    margin-bottom: 1.5rem; 
 }
-.post {
-    width: 35rem;
-    height: 32rem;
-    margin-bottom: 5rem;
+    .post img, .post svg {
+        width: 100%;
+        height: 15rem;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .post .title{
+        height: 4.5rem;
+    }
+    .post .title h5 {
+        color: #333;
+    }
+.post .info{
+    color: #3333;
+    font-size: 12px;
 }
-    .post img {
-        max-width: 32rem;
-        height: 25rem;
-        border-radius: 8px;
-    }
-    .post .title {
-        font-style: normal;
-        font-weight: bold;  
-        font-size: 20px;
-        line-height: 32px;
-        /* Black 80% */
-        color: #121221;
-    }
-    .post a {
-        text-decoration: none;
-    }
-    .post .info {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 14px;
-        /* Black 20% */
-
-        color: #949494;
-    }
-

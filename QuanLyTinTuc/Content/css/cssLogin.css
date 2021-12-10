@@ -1,7 +1,10 @@
 ﻿body {
 }
 .login {
-    width: 1000px;
+    padding-top: 3rem;
+    padding-right: 20rem;
+    padding-left: 20rem;
+    padding-bottom: 5rem;
     display: flex;
     margin-top: 20px;
     margin: auto;
@@ -9,31 +12,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #f6f5f0;
+    border-radius: 12px;
 }
-    .login hr {
-        height: 1px;
-        color: white;
-        background-color: white;
-        border: none;
-        margin-bottom: 5rem;
-    }
-    .login .login-content {
-        background-color: #f0f0f0;
-        width: 50rem;
-        border-radius: 10px;
-        height: 50rem;
+.login h1{
+    text-align: center;
+    padding: 1.5rem;
+}
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-.form-control {
-    width: 30rem;
-    border: none;
-    padding: 20px 15px;
-    margin: 15px 0;
-}
 button {
     border-radius: 20px;
     width: 20rem;
@@ -61,12 +47,9 @@ button {
         background-color: transparent;
         border-color: #FFFFFF;
     }
+
 .login a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
-}
-.login h1 {
-    vertical-align: middle;
-    text-align: center;
 }

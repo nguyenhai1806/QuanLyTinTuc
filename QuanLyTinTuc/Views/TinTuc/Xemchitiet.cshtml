@@ -1,9 +1,32 @@
-﻿@model QuanLyTinTuc.Models.TinTuc
+﻿
+@model QuanLyTinTuc.Models.TinTuc
 @{
     ViewBag.Title = "xemchitiet";
 }
 
 <style>
+    article img {
+        border-radius: 10px;
+    }
+
+    p {
+        text-justify: inter-word;
+    }
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #97d1c3;
+        outline: 0;
+        box-shadow: 0 0 0 0.1rem #97d1c3;
+    }
+    .btn-success{
+        background-color: white;
+        color: #333;
+    }
+    .btn-success:focus {
+        color: white;
+        background-color: #97d1c3;
+    }
 </style>
 
 <div class="container">
@@ -11,9 +34,30 @@
     <h1 style="font-weight: bold">@Model.TieuDe</h1>
     <br />
     <br />
-    <article>
-        @Html.Raw(@Model.NoiDung);
+    <article class="article preconnect">
+        @Html.Raw(@Model.NoiDung)
     </article>
     <br />
+
+    <h3>Bình luận</h3>
+    <form action="#" method="post" class="form-container">
+        <div class="row">
+            <input type="hidden" name="txtMaTinTuc" value=@Model.MaTinTuc class="form-group form-control" />
+            <div class="col-md-6">
+                <input type="text" name="txtName" value="" placeholder="Họ tên" class="form-group form-control" />
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="txtEmail" value="" placeholder="Email" class="form-group form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <textarea name="text" class="form-group form-control" id="txtComment" placeholder="Comment của bạn"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn-group btn btn-success">Bình luận</button>
+        <br />
+    </form>
 </div>
+
 
