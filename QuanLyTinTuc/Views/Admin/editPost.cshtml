@@ -11,7 +11,7 @@
     }
 </style>
 <div class="container-fluid" style="margin-top:15px;padding-top:15px;">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("editPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -47,21 +47,13 @@
         <div class="form-group" id="avatarPost">
             @Html.Label("Ảnh đại diện bài viết: ", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-10">
-                <input type="file" id="avatarFile" name="avatarFile" class="form-control-file" />
-                @Html.EditorFor(model => model.HinhDaiDien, new { htmlAttributes = new { @class = "form-control", @id="avatarFile" } })
+                @Html.TextBox("avatarFile", "", new { type = "file" })
                 @Html.ValidationMessageFor(model => model.HinhDaiDien, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*<div class="form-group id=" avatarPost"">
-            @Html.LabelFor(model => model.HinhDaiDien, " Thay đổi ảnh đại diện bài viết", htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-10">
-                <input type="file" id="avatarFile" name="avatarFile" class="form-control-file" />
-                @Html.ValidationMessageFor(model => model.HinhDaiDien, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
         <div class="form-group">
             <div class="col-md-10" style="text-align:center">
-                <img class="img-responsive" style="max-width:60%;text-align:center" id="avtpreview" src="~/img/@Model.HinhDaiDien" @*src="~/Content/images/no-image-available.jpg"*@ alt="Ảnh đại diện" />
+                <img class="img-responsive" style="max-width:60%;text-align:center" id="avtpreview" src="~/Upload/images/@Model.HinhDaiDien" @*src="~/Content/images/no-image-available.jpg"*@ alt="Ảnh đại diện" />
             </div>
         </div>
         <div class="form-group">
@@ -78,16 +70,6 @@
                     @Html.EditorFor(model => model.SoLanXem, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.SoLanXem, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("Trạng thái bài viết:", htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-10">
-                <label class="switch">
-                    <input type="checkbox" id="Status" name="Status" value="@(Model.TrangThai == true ? "true" : "false")" @(Model.TrangThai == true ? "checked" : "") class="success">
-                    <span class="slider"></span>
-                </label>
-                <p id="showstatus" style="display:inline"> Đăng ngay</p>
             </div>
         </div>
         <div class="form-group">

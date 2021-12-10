@@ -27,6 +27,20 @@ namespace QuanLyTinTuc.Controllers
 
             return View(chitiet);
         }
+        public ActionResult Create([Bind(Include = "Noidung,HoTen,Email,MaTinTuc")] BinhLuan binhLuan)
+        {
+            if (ModelState.IsValid)
+            {
+                binhLuan.ThoiGian = DateTime.Now;
+                binhLuan.TrangThai = 1;
+                db.BinhLuans.Add(binhLuan);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.MaTinTuc = new SelectList(db.TinTucs, "MaTinTuc", "TieuDe", binhLuan.MaTinTuc);
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult ThoiSu()
         {
             return View(db.TinTucs.Where(n=>n.MaChuDe==1).ToList());

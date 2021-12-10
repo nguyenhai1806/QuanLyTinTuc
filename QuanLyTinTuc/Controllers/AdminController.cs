@@ -180,10 +180,19 @@ namespace QuanLyTinTuc.Controllers
         [HttpPost]
         //[ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult newPost([Bind(Include = "MaTinTuc,TieuDe,HinhDaiDien,NoiDung,Ngay,SoLanXem,TrangThai,MaChuDe,MaAccount")] TinTuc tinTuc)
+        public ActionResult newPost([Bind(Include = "MaTinTuc,TieuDe,HinhDaiDien,NoiDung,Ngay,SoLanXem,TrangThai,MaChuDe,MaAccount")] TinTuc tinTuc, HttpPostedFileBase avatarFile)
         {
             if (ModelState.IsValid)
             {
+                if (avatarFile.FileName != "")
+                {
+                    string tenHinh = Path.GetFileName(avatarFile.FileName);
+                    avatarFile.SaveAs(Path.Combine(Server.MapPath("~/Upload/images/"), tenHinh));
+                    tinTuc.HinhDaiDien = avatarFile.FileName;
+                }
+                if (tinTuc.Ngay == null)
+                    tinTuc.Ngay = DateTime.Now;
+                tinTuc.SoLanXem = 0;
                 tinTuc.MaAccount = int.Parse(Session["Id"].ToString());
                 db.TinTucs.Add(tinTuc);
                 db.SaveChanges();
@@ -218,13 +227,19 @@ namespace QuanLyTinTuc.Controllers
         [HttpPost]
         //[ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult editPost([Bind(Include = "MaTinTuc, TieuDe,HinhDaiDien,NoiDung,Ngay,SoLanXem,TrangThai,MaChuDe,MaAccount")] TinTuc tinTuc)
+        public ActionResult editPost([Bind(Include = "MaTinTuc, TieuDe,HinhDaiDien,NoiDung,Ngay,SoLanXem,TrangThai,MaChuDe,MaAccount")] TinTuc tinTuc, HttpPostedFileBase avatarFile)
         {
             if (Session["Id"] == null)
                 return RedirectToAction("Login", "Account");
 
             if (ModelState.IsValid)
             {
+                if (avatarFile.FileName != "")
+                {
+                    string tenHinh = Path.GetFileName(avatarFile.FileName);
+                    avatarFile.SaveAs(Path.Combine(Server.MapPath("~/Upload/images/"), tenHinh));
+                    tinTuc.HinhDaiDien = avatarFile.FileName;
+                }
                 tinTuc.MaAccount = int.Parse(Session["Id"].ToString());
                 db.Entry(tinTuc).State = EntityState.Modified;
                 db.SaveChanges();

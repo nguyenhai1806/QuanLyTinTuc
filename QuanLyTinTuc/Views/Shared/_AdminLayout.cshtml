@@ -44,7 +44,7 @@
         }
     </style>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Admin Đại Việt Cổ Phong</title>
+    <title>@ViewBag.Title - Admin Tin tuc</title>
     <link rel="icon" href="~/Content/images/dvcp.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -112,22 +112,13 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="~/Content/images/apple-icon-120x120.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                <img src="~/Upload/icon/icon.svg"height="100" width="100" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">Trang chủ admin</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="~/Content/images/apple-icon-120x120.png" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">@User.Identity.Name</a>
-                    </div>
-                </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -175,70 +166,15 @@
                                         <p>Quản lý bình luận</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="~/Accounts/Index" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon text-primary"></i>
-                                        <p>Quản lý Account</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-user-circle"></i>
-                                <p>
-                                    Người dùng
-                                    <i class="fa fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/User/ChangePass" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon text-danger"></i>
-                                        <p>Đổi mật khẩu</p>
-                                    </a>
-                                </li>
-                                @*@{ if (User.IsInRole("admin"))
-                                    {*@
-                        <li class="nav-item">
-                            <a href="/Accounts" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon text-success"></i>
-                                <p>Quản lý người dùng</p>
-                            </a>
-                        </li>
-                                        <li class="nav-item">
-                                            <a href="/Accounts/Create" class="nav-link">
-                                                <i class="fa fa-circle-o nav-icon text-info"></i>
-                                                <p>Tạo người dùng</p>
-                                            </a>
-                                        </li>
-                                        @*} }*@
-
-
                             </ul>
                         </li>
                         <li class="nav-header" style="font-size:1.1rem">Công cụ</li>
-                        <li class="nav-item">
-                            <a href="/Admin/FileManager" target="_blank" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-info"></i>
-                                <p>Quản Lý File</p>
-                            </a>
-                        </li>
-                        @*@if (User.IsInRole("admin"))
-                        {*@
-            <li class="nav-item">
-                <a href="/Admin/InfoChange" class="nav-link">
-                    <i class="nav-icon fa fa-circle-o text-success"></i>
-                    <p>Thông tin website</p>
-                </a>
-            </li>
                             <li class="nav-item">
-                                <a href="/Admin/HotPostManager" class="nav-link">
+                                <a href="/Home/About" class="nav-link">
                                     <i class="nav-icon fa fa-circle-o text-success"></i>
-                                    <p>Quản lý bài ghim</p>
+                                    <p>Thông tin website</p>
                                 </a>
                             </li>
-                            @*//}*@
                         <li class="nav-item">
                             <a href="@Url.Action("Logout","Account")" class="nav-link">
                                 <i class="nav-icon fa fa-sign-out text-danger"></i>
