@@ -32,7 +32,7 @@ namespace QuanLyTinTuc.Controllers
         }
         public ActionResult NewPost()
         {
-            return PartialView(db.TinTucs.Take(8).Where(m => m.TrangThai == true).OrderByDescending(m => m.SoLanXem).ToList());
+            return PartialView(db.TinTucs.Take(8).Where(m => m.TrangThai == true).OrderByDescending(m => m.Ngay).ToList());
         }
 
 
